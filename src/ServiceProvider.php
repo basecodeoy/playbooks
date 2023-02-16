@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace PreemStudio\Playbooks;
 
-use Spatie\LaravelPackageTools\Package;
 use PreemStudio\Playbooks\Commands\RunPlaybookCommand;
+use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
 
 class ServiceProvider extends PackageServiceProvider
