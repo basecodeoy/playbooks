@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace PreemStudio\Playbooks;
 
-class PlaybookDefinition
+final class PlaybookDefinition
 {
     /** @var string */
     public $id;
@@ -39,6 +39,6 @@ class PlaybookDefinition
     public function __construct(string $className)
     {
         $this->playbook = app($className);
-        $this->id       = get_class($this->playbook);
+        $this->id = get_class($this->playbook);
     }
 }
