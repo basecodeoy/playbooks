@@ -39,6 +39,6 @@ final class PlaybookDefinition
     public function __construct(string $className)
     {
         $this->playbook = app($className);
-        $this->id = get_class($this->playbook);
+        $this->id       = get_class($this->playbook);
     }
 }

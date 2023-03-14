@@ -2,11 +2,14 @@
 
 declare(strict_types=1);
 
-namespace PreemStudio\Playbooks\Tests;
+namespace Tests;
 
-use Orchestra\Testbench\TestCase as Orchestra;
+use PreemStudio\Jetpack\TestBench\AbstractPackageTestCase;
 
-abstract class TestCase extends Orchestra
+abstract class TestCase extends AbstractPackageTestCase
 {
-    //
+    public function getServiceProviderClass(): string
+    {
+        return \PreemStudio\Playbooks\ServiceProvider::class;
+    }
 }
