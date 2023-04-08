@@ -27,10 +27,10 @@ final class RunPlaybookCommand extends Command
 
         $playbookName = $this->argument('playbook');
 
-        if (! $playbookName) {
+        if (!$playbookName) {
             $availablePlaybooks = $this->getAvailablePlaybooks();
 
-            $this->comment('Choose a playbook: '.PHP_EOL);
+            $this->comment('Choose a playbook: '.\PHP_EOL);
 
             foreach ($availablePlaybooks as $availablePlaybook) {
                 $this->comment("- {$availablePlaybook}");
@@ -59,7 +59,7 @@ final class RunPlaybookCommand extends Command
     {
         foreach ($definition->playbook->before() as $before) {
             $this->runPlaybook(
-                $this->resolvePlaybookDefinition($before)
+                $this->resolvePlaybookDefinition($before),
             );
         }
 
@@ -79,7 +79,7 @@ final class RunPlaybookCommand extends Command
 
         foreach ($definition->playbook->after() as $after) {
             $this->runPlaybook(
-                $this->resolvePlaybookDefinition($after)
+                $this->resolvePlaybookDefinition($after),
             );
         }
     }
@@ -94,7 +94,7 @@ final class RunPlaybookCommand extends Command
 
         $playbookName = (string) $helper->ask($this->input, $this->output, $question);
 
-        if (! $playbookName) {
+        if (!$playbookName) {
             $this->error('Please choose a playbook');
 
             return $this->askPlaybookName($availablePlaybooks);
@@ -105,11 +105,11 @@ final class RunPlaybookCommand extends Command
 
     protected function getAvailablePlaybooks(): array
     {
-        $files = scandir($this->getPlaybooksPath());
+        $files = \scandir($this->getPlaybooksPath());
 
         unset($files[0], $files[1]);
 
-        return array_map(fn (string $file) => str_replace('.php', '', $file), $files);
+        return \array_map(fn (string $file) => \str_replace('.php', '', $file), $files);
     }
 
     protected function resolvePlaybookDefinition($class): PlaybookDefinition
@@ -119,13 +119,13 @@ final class RunPlaybookCommand extends Command
         }
 
         if ($class instanceof Playbook) {
-            return new PlaybookDefinition(get_class($class));
+            return new PlaybookDefinition($class::class);
         }
 
         $className = $class;
         $namespace = $this->getDefaultNamespace();
 
-        if (! Str::startsWith($class, ['\\'.$namespace, $namespace])) {
+        if (!Str::startsWith($class, ['\\'.$namespace, $namespace])) {
             $className = $this->getPlaybooksNamespace()."\\{$class}";
         }
 
@@ -134,7 +134,7 @@ final class RunPlaybookCommand extends Command
 
     protected function infoRunning(Playbook $playbook, int $i): void
     {
-        $playbookName = get_class($playbook);
+        $playbookName = $playbook::class;
 
         $this->info("Running playbook `{$playbookName}` (#{$i})");
     }

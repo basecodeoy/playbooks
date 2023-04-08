@@ -6,21 +6,35 @@ namespace PreemStudio\Playbooks;
 
 final class PlaybookDefinition
 {
-    /** @var string */
+    /**
+     * @var string
+     */
     public $id;
 
-    /** @var \PreemStudio\Playbooks\Playbook */
+    /**
+     * @var \PreemStudio\Playbooks\Playbook
+     */
     public $playbook;
 
-    /** @var int */
+    /**
+     * @var int
+     */
     public $times = 1;
 
-    /** @var bool */
+    /**
+     * @var bool
+     */
     public $once = false;
+
+    public function __construct(string $className)
+    {
+        $this->playbook = app($className);
+        $this->id = \get_class($this->playbook);
+    }
 
     public static function times(string $className, int $times): self
     {
-        $definition = new static($className);
+        $definition = new self($className);
 
         $definition->times = $times;
 
@@ -29,16 +43,10 @@ final class PlaybookDefinition
 
     public static function once(string $className): self
     {
-        $definition = new static($className);
+        $definition = new self($className);
 
         $definition->once = true;
 
         return $definition;
-    }
-
-    public function __construct(string $className)
-    {
-        $this->playbook = app($className);
-        $this->id       = get_class($this->playbook);
     }
 }
