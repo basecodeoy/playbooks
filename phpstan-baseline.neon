@@ -1,0 +1,36 @@
+parameters:
+	ignoreErrors:
+		-
+			message: "#^Call to an undefined method BombenProdukt\\\\Playbooks\\\\Commands\\\\RunPlaybookCommand\\:\\:getDefaultNamespace\\(\\)\\.$#"
+			count: 1
+			path: src/Commands/RunPlaybookCommand.php
+
+		-
+			message: "#^Call to an undefined method Symfony\\\\Component\\\\Console\\\\Helper\\\\HelperInterface\\:\\:ask\\(\\)\\.$#"
+			count: 1
+			path: src/Commands/RunPlaybookCommand.php
+
+		-
+			message: "#^Method BombenProdukt\\\\Playbooks\\\\Commands\\\\RunPlaybookCommand\\:\\:resolvePlaybookDefinition\\(\\) has parameter \\$class with no type specified\\.$#"
+			count: 1
+			path: src/Commands/RunPlaybookCommand.php
+
+		-
+			message: "#^Property BombenProdukt\\\\Playbooks\\\\Commands\\\\RunPlaybookCommand\\:\\:\\$ranDefinitions has no type specified\\.$#"
+			count: 1
+			path: src/Commands/RunPlaybookCommand.php
+
+		-
+			message: "#^Method BombenProdukt\\\\Playbooks\\\\Playbook\\:\\:run\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: src/Playbook.php
+
+		-
+			message: "#^Property BombenProdukt\\\\Playbooks\\\\Playbook\\:\\:\\$timesRun has no type specified\\.$#"
+			count: 1
+			path: src/Playbook.php
+
+		-
+			message: "#^Property BombenProdukt\\\\Playbooks\\\\PlaybookDefinition\\:\\:\\$id \\(string\\) does not accept class\\-string\\|false\\.$#"
+			count: 1
+			path: src/PlaybookDefinition.php
