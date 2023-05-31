@@ -26,8 +26,6 @@ abstract class Playbook
         return [];
     }
 
-    abstract public function run(InputInterface $input, OutputInterface $output);
-
     public function hasRun(): void
     {
         self::$timesRun++;
@@ -42,4 +40,6 @@ abstract class Playbook
     {
         return [];
     }
+
+    abstract public function run(InputInterface $input, OutputInterface $output);
 }
