@@ -16,6 +16,16 @@ parameters:
 			path: src/Commands/RunPlaybookCommand.php
 
 		-
+			message: "#^Only booleans are allowed in a negated boolean, string given\\.$#"
+			count: 1
+			path: src/Commands/RunPlaybookCommand.php
+
+		-
+			message: "#^Only booleans are allowed in a negated boolean, string\\|null given\\.$#"
+			count: 1
+			path: src/Commands/RunPlaybookCommand.php
+
+		-
 			message: "#^Property BombenProdukt\\\\Playbooks\\\\Commands\\\\RunPlaybookCommand\\:\\:\\$ranDefinitions has no type specified\\.$#"
 			count: 1
 			path: src/Commands/RunPlaybookCommand.php
