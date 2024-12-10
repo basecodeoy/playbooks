@@ -1,0 +1,20 @@
+{
+    "symbol-whitelist": [
+        "array",
+        "bool",
+        "false",
+        "int",
+        "null",
+        "self",
+        "string",
+        "true",
+        "app",
+        "app_path",
+        "Illuminate\\Console\\Command",
+        "Illuminate\\Support\\Facades\\App",
+        "Illuminate\\Support\\Str",
+        "Symfony\\Component\\Console\\Input\\InputInterface",
+        "Symfony\\Component\\Console\\Output\\OutputInterface",
+        "Symfony\\Component\\Console\\Question\\Question"
+    ]
+}
